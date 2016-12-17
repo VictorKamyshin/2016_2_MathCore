@@ -8,7 +8,7 @@
  this.addEventListener('install', function (event) {
 // задержим обработку события
 // если произойдёт ошибка, serviceWorker не установится
- 	event.waitUntil(
+ /*	event.waitUntil(
  		// находим в глобальном хранилище Cache-объект с нашим именем
  		// если такого не существует, то он будет создан
  		caches.open(CACHE_NAME)
@@ -33,4 +33,4 @@
  			return fetch(event.request);
  		})
  	);
- });
+ });*/

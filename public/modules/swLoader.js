@@ -1,4 +1,4 @@
- 'use strict';
+/* 'use strict';
 //
 import serviceWorkerURL from '../sw'; // see webpack.config.js
 //
@@ -15,3 +15,4 @@ import serviceWorkerURL from '../sw'; // see webpack.config.js
   			throw new Error('ServiceWorker error: ' + err);
  		});
   }
+*/

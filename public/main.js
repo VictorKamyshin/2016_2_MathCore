@@ -1,5 +1,5 @@
 
-import './modules/swLoader';
+//import './modules/swLoader';
 import './css/main.scss';
 import './lib/hand';
 

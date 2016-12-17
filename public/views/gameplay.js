@@ -37,7 +37,9 @@ import BABYLON from "../lib/babylon.js";
             this.player1 = new Player(0, scene, {});
             this.player2 = new Player(1, scene, {});
             this.MovementUnresolved = false;
-            this.picked = false;
+            this.pirats_picked = false;
+            this.ship_picked = false;
+            //this.picked = false;
 
             scene.onPointerDown = this.gameInit.bind(this);
 
@@ -83,9 +85,13 @@ import BABYLON from "../lib/babylon.js";
                     this.Enemy = this.player1;
                 }
                 this.pirats = this.Player.get_pirats();
-                this.pirats.forEach(function(mesh){
+                this.ship = this.Player.get_ship();
+                this.ship.forEach(function(mesh){
                     mesh.isPickable = true;
                 });
+                /*this.pirats.forEach(function(mesh){
+                    mesh.isPickable = true;
+                });*/
                 this.messaging.sendPingMessage();
                 this.engine.hideLoadingUI();
         }
@@ -101,9 +107,16 @@ import BABYLON from "../lib/babylon.js";
         movement(evt){
                 console.log(evt.content);
                 if(evt.content.active){
-                    this.pirats.forEach(function(mesh){
+                    this.ship.forEach(function(mesh){
                         mesh.isPickable = true;
                     });
+                    let sailors = this.Player.get_pirats_on_ship();
+                    for(let i = 0; i < 3; i++){
+                        if(sailors.indexOf(i) === -1){
+                            this.pirats[i].isPickable = true;
+                            //this.pirats[i].isVisible = true;
+                        }
+                    }
                   }
                     let movements = JSON.parse(evt.content.movement);
                     for(let j = 0; j < movements.length; j++){
@@ -116,12 +129,13 @@ import BABYLON from "../lib/babylon.js";
                       else{
                         pirats = this.Player.get_pirats();
                         this.targetCellIndex = move.targetCellIndex;
-                        console.log(this.targetCellIndex);
+                       // console.log(this.targetCellIndex);
                       }
                       let posx = move.playerIngameId === 0 ? 0.1 : -0.2 ; //?
                       let posz = move.playerIngameId === 0 ? 0.2 :  0.8 ; //?
                       let x = - (6 - move.targetCellIndex%13 + posx)*(1200/13);
                       let z = - (6 - move.targetCellIndex/13 + posz)*(1200/13);
+                      pirats[this.PiratId].isVisible = true;
                       pirats[this.PiratId].position = new BABYLON.Vector3(x, 20, z);
 
                       //try to add normal animation
@@ -153,15 +167,27 @@ import BABYLON from "../lib/babylon.js";
                           }
 	                  	});*/
 
-                      let ids = this.Player.get_ids();
-                      ids[this.index] = this.targetCellIndex;
-                      this.Player.set_ids(ids);
+                      if(this.targetCellIndex != undefined){
+                          let ids = this.Player.get_ids();
+                          //ids[this.index] = this.targetCellIndex;
+                          ids[this.PiratId] = this.targetCellIndex;
+                          this.Player.set_ids(ids);
+                      }
+                      console.log("Айдишники клеток пиратов:");
+                      console.log(this.Player.get_ids());
                     }
         }
 
         gameInit(evt, pickResult){
             if(pickResult.hit){
                 let mesh = pickResult.pickedMesh;
+                if(this.ship.indexOf(mesh) != -1){
+                    let location = this.Player.get_ship_location();
+                    let data = {};
+                    data.cellIndex = location;
+                    this.messaging.sendGetNeighbors(data);
+                    this.ship_picked = true;
+                }
                 if(this.pirats.indexOf(mesh) != -1){
                     mesh.material.emissiveColor = new BABYLON.Color3(0, 0.6, 0);
                     this.index = this.pirats.indexOf(mesh);
@@ -175,25 +201,53 @@ import BABYLON from "../lib/babylon.js";
                     let getCellneighbors = {};
                     getCellneighbors.cellIndex = cellIndex;
                     this.messaging.sendGetNeighbors(getCellneighbors);
-                    this.picked = true;
+                    this.pirats_picked = true;
                 }
-                if((mesh === this.gameField)&&(this.picked == true)){
+                if((mesh === this.gameField)&&(this.pirats_picked === true)){
                     let id = pickResult.subMeshId;
                     if(this.neighbors.indexOf(id) != -1){
                         this.pirats[this.index].material.emissiveColor = new BABYLON.Color3(0,0,0);
-                        this.picked = false;
+                        console.log("раз");
+                        this.pirats_picked = false;
+                        console.log("два");
                         for (let i = 0; i < this.neighbors.length; ++i){
                             this.gameField.subMeshes[this.neighbors[i]].materialIndex = 1;
                         }
+                        console.log("Три");
                         this.pirats.forEach(function(elem){
                             elem.isPickable = false;
                         });
+                        console.log("4");
                         let piratMove = {};
                         piratMove.targetCellIndex = id;
                         piratMove.piratId = this.index;
+                        console.log("отправляю ход игрока с параметрами:");
+                        console.log("айди пирата = " + piratMove.piratId + " , клетка, на которую передвинуть: " + piratMove.targetCellIndex);
                         this.messaging.sendPiratMove(piratMove);
                     }
                 }
+                if((mesh === this.gameField)&&(this.ship_picked === true)){
+                    let id = pickResult.subMeshId;
+                    this.ship_picked = false;
+                    if(this.neighbors.indexOf(id) != -1){
+                        for (let i = 0; i < this.neighbors.length; ++i){
+                            this.gameField.subMeshes[this.neighbors[i]].materialIndex = 1;
+                        }
+                        this.ship.forEach(function(elem){
+                            elem.isPickable = false;
+                        });
+                        let ship_cell_id = this.Player.get_ship_location();
+                        if(Math.abs(ship_cell_id - id) === 1){
+                            let moved_pirat = this.Player.move_pirat_from_ship();
+                            let move_data = {};
+                            //this.pirats[moved_pirat].isVisible = true;
+                            move_data.targetCellIndex = id;
+                            move_data.piratId = moved_pirat;
+                            this.messaging.sendPiratMove(move_data);
+                        }
+                    }
+                }
+
             }
         }
 

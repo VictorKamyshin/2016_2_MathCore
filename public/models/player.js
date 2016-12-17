@@ -35,6 +35,7 @@ export default class Player extends Model {
           this.pirats[j].scaling = new BABYLON.Vector3(25,25,25);
           this.pirats[j].renderingGroupId = 1;
       }
+      console.log(this.pirats[0]);
       document.dispatchEvent(this.MeshLoadEvent);
     }
 
@@ -46,15 +47,45 @@ export default class Player extends Model {
         this.ship[j] = newMeshes[j].clone("ShipPart"+j);
         this.ship[j].scaling = new BABYLON.Vector3(4,4,4);
         this.ship[j].renderingGroupId = 1;
+        //this.ship[j].isPickable = true;
       }
+      //console.log(this.ship);
       this.set_ship_position(new BABYLON.Vector3(x,y,z));
-      this.set_ship_light()
+      this.ship_location = this.ids[0];
+      this.pirats_on_ship = [0,1,2];
+      this.set_ship_light();
     }
 
     set_ship_position(position){
       this.ship.forEach(function(elem){
         elem.position = position;
       })
+    }
+
+    get_ship(){
+        return this.ship;
+    }
+
+    get_ship_location(){
+        return this.ship_location;
+    }
+
+    set_ship_location(new_location){
+        this.ship_location = new_location;
+    }
+
+    move_pirat_from_ship(){
+        for(let j = 0; j < 3; j++){
+            if(this.pirats_on_ship[j]){
+                delete this.pirats_on_ship[j];
+                return j;
+            }
+        }
+        return -1;
+    }
+
+    get_pirats_on_ship(){
+        return this.pirats_on_ship;
     }
 
     set_ship_light(){
@@ -87,10 +118,10 @@ export default class Player extends Model {
           elem.rotation.y = rotation;
           z += 35;
           elem.isPickable = false;
-          //elem.isVisible = false;
+          elem.isVisible = false;
         })
 
-        let pirats = this.pirats;
+       // let pirats = this.pirats;
 
       //  this.scene.beginAnimation(pirats[0].skeleton, 0, 60, true, 1.0);
       //  this.scene.beginAnimation(pirats[1].skeleton, 0, 60, true, 1.0);
