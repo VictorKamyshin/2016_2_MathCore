@@ -69,7 +69,7 @@
 
         startGame(evt){
                 this.engine.loadingUIText = " Соперник найден! ";
-                this.gameCellIds = JSON.parse(evt.content.gameBoard);
+                this.gameCellIds = evt.content.gameBoard;
                 console.log("GameBoard:");
                 console.log(this.gameCellIds);
                 if(evt.content.active){
@@ -89,7 +89,7 @@
         }
 
         getNeighbors(evt){
-                this.neighbors = JSON.parse(evt.content.neighbors);
+                this.neighbors = evt.content.neighbors;
                 console.log(this.neighbors);
                 for(let j = 0; j < this.neighbors.length; j++){
                     this.gameField.subMeshes[this.neighbors[j]].materialIndex = 0;
