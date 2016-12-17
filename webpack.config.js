@@ -21,15 +21,6 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
-				loader: 'babel-loader',
-				options: {
-					presets: ['latest'],
-					plugins: ["transform-strict-mode"]
-				}
-			},
-			{
 				test: /\.(s)?css/,
 				loader: 'style-loader!css-loader!postcss-loader!sass-loader'
 			},
