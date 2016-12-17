@@ -12,7 +12,7 @@ module.exports = {
 	devtool: 'eval-source-map',
 	entry: {
 		app: path.resolve(__dirname, 'public', 'main.js'),
-		vendor: ['babel-polyfill', 'eventsource-polyfill', './public/babylon.js', './public/hand.js']
+		vendor: ['babel-polyfill', 'eventsource-polyfill', './public/lib/babylon.js', './public/lib/hand.js']
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -20,15 +20,6 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			{
-				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
-				loader: 'babel-loader',
-				options: {
-					presets: ['latest'],
-					plugins: ["transform-strict-mode"]
-				}
-			},
 			{
 				test: /\.(s)?css/,
 				loader: 'style-loader!css-loader!postcss-loader!sass-loader'
@@ -55,8 +46,8 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin('dist'),
 		new CopyWebpackPlugin([{
-			from: path.join(__dirname, "public", 'sky34'),
-			to: path.join(__dirname, "dist", 'sky34')
+			from: path.join(__dirname, "public/static", 'sky34'),
+			to: path.join(__dirname, "dist/static", 'sky34')
 		},
 		{
 			from: path.join(__dirname, "public",'static'),

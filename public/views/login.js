@@ -48,8 +48,6 @@ export default class LoginView extends View {
 							// onclick: "(new Router).go('/user')"
 						},
 					}
-
-
 				],
 			},
 		});
@@ -65,25 +63,23 @@ export default class LoginView extends View {
 	onSubmit(event){
 		event.preventDefault();
 		let userData = this.form.getFormData();
-
-  if(this.form.isValid()){
+		if(this.form.isValid()){
 		window.session.send('POST', userData).then(
 			() => {
 				window.session.login(userData.login);
-
 				document.dispatchEvent( new CustomEvent("updateMenu", {
 					detail:{
 						isAuthorized: true
 					}
 				}) );
-
 				(new Router).go('/scores');
+			}).catch(
+				(error) => {
+					console.log(error);
+					alert("This user doesn't exist");
+					this.form.reset();
 
-			},
-			() => {
-				this.form.innerHtml = 'Неверные данные';
-			}
-		)
+			});
 	}
 	}
 

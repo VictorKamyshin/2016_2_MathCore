@@ -29,11 +29,16 @@ export default class Socket {
     console.log('Info: WebSocket closed.');
   }
 
-  onSocketMessage(event){
-    let content = {};
-    let responseContent = {};
-    let response = {};
-    let message = JSON.parse(event.data);
+
+    onSocketMessage(event){
+      let content = {};
+      let responseContent = {};
+      let response = {};
+      let message = JSON.parse(event.data);
+      if(message.type === "ru.mail.park.mechanics.requests.ReplyPingMessage$Request"){
+          setTimeout(this.messaging.sendPingMessage(), 30000);
+      }
+
     if(message.type === "ru.mail.park.websocket.MessageToClient$Request") {
         content = JSON.parse(message.content);
         responseContent.myMessage = content.myMessage;
