@@ -1,7 +1,6 @@
-(function () {
-	'use strict';
+'use strict';
+import {pathToRegex} from "../../public/modules/pathToRegex.js";
 
-	//let pathToRegex = function () {};
 
 	describe('pathToRegex', function () {
 		it('pathToRegex возвращает функцию', function () {
@@ -92,4 +91,4 @@
 	});
 
 
-})();
+//})();

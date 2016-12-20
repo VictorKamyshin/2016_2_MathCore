@@ -1,5 +1,4 @@
-(function () {
-	'use strict';
+import View from "../../public/modules/view.js";
 
 
 	describe('Класс View', function () {
@@ -28,4 +27,4 @@
 		});
 
 	})
-})();
+//})();

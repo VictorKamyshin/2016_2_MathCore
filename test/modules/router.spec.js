@@ -1,5 +1,7 @@
-(function () {
-	'use strict';
+import Router from "../../public/modules/router.js";
+import Route from "../../public/modules/route.js";
+import View from "../../public/modules/view.js";
+
 
 	beforeEach(function () {
 		delete Router.__instance;
@@ -110,4 +112,4 @@
 		})
 	});
 	
-})();
+//})();
