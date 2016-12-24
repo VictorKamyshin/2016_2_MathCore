@@ -40,9 +40,9 @@
                 Ходит игрок 0
             </div>
             <div class="player__login">
-                <fest:if test="json.userData.login">
+                 <fest:if test="json.userData.login">
                     <fest:value output="text">json.userData.login</fest:value>
-                </fest:if>
+                </fest:if> 
             </div>
             <div class="play__player">
                     <div class="player__money">

@@ -19,15 +19,15 @@ export default class Overplay extends Block {
 
     init() {
         this._updateHtml();
-        
+
     }
 
     _updateHtml() {
-        let userData = {
-            login: window.session.getLogin() || ""
-        };
-        let params = window.location.pathname.split("/");
-        this._el.innerHTML = this.template({userData: userData, active: params.length == 1 ? "" : params[1]});
+         let userData = {
+             login: window.session.getLogin() || ""
+         };
+         let params = window.location.pathname.split("/");
+         this._el.innerHTML = this.template({userData: userData, active: params.length == 1 ? "" : params[1]});
         //this._el.innerHTML = this.template();
     }
     setStatus(message){
