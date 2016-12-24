@@ -125,3 +125,11 @@ body {
 		height: auto;
 		z-index: -9999;
 }
+@media screen and (max-device-width: 768px) {
+	.js-welcome-panel {
+		min-width: 300px;
+	}
+	.js-welcome-panel__login-form {
+		margin: 0 0 10px;
+	}
+}
