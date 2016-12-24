@@ -32,7 +32,7 @@ export default class Player extends Model {
             this.pirats[j] = newMeshes[0].clone("Astronaut" + j + index);
             this.pirats[j].skeleton = newMeshes[0].skeleton.clone("skelet" + j +index);
             this.pirats[j].material = newMeshes[0].material.clone("Material" + j +index);
-            this.pirats[j].scaling = new BABYLON.Vector3(25,25,25);
+            this.pirats[j].scaling = new BABYLON.Vector3(29,29,29);
             this.pirats[j].renderingGroupId = 1;
         }
         //console.log(this.pirats[0]);
@@ -41,11 +41,11 @@ export default class Player extends Model {
 
     onShipLoad(newMeshes){
         let y = 40, z = 0;
-        let x = this.index === 0 ? -700 : 700;
+        let x = this.index === 0 ? -1100 : 1100;//700
         this.ship = [];
         for(let j = 1; j < newMeshes.length; j++){
             this.ship[j] = newMeshes[j].clone("ShipPart"+j);
-            this.ship[j].scaling = new BABYLON.Vector3(4,4,4);
+            this.ship[j].scaling = new BABYLON.Vector3(5,5,5);
             this.ship[j].renderingGroupId = 1;
             this.ship[j].isPickable = true;
         }
@@ -122,11 +122,13 @@ export default class Player extends Model {
         let rotation;
 
         if(this.index === 0){
-            x = -600;
+            //x = -600;
+            x=-1000;
             rotation = -Math.PI/2;
         }
         else{
-            x = 600;
+            //x = 600;
+            x = 1000;
             rotation = Math.PI/2;
         }
 

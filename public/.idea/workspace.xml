@@ -21,11 +21,9 @@
       <file leaf-file-name="gameplay.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/gameplay.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="513" column="0" lean-forward="true" selection-start-line="513" selection-start-column="0" selection-end-line="513" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="297">
+              <caret line="104" column="83" lean-forward="false" selection-start-line="104" selection-start-column="83" selection-end-line="104" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -43,7 +41,7 @@
       <file leaf-file-name="messaging.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/messaging.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
+            <state relative-caret-position="1152">
               <caret line="64" column="5" lean-forward="false" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
               <folding />
             </state>
@@ -53,7 +51,7 @@
       <file leaf-file-name="socket.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/socket.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
+            <state relative-caret-position="234">
               <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
@@ -63,7 +61,7 @@
       <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
+            <state relative-caret-position="1224">
               <caret line="74" column="43" lean-forward="true" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -75,8 +73,8 @@
       <file leaf-file-name="player.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/player.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3240">
-              <caret line="180" column="0" lean-forward="true" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+            <state relative-caret-position="612">
+              <caret line="34" column="65" lean-forward="false" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -92,9 +90,9 @@
         <option value="$PROJECT_DIR$/modules/swLoader.js" />
         <option value="$PROJECT_DIR$/sw.js" />
         <option value="$PROJECT_DIR$/main.js" />
-        <option value="$PROJECT_DIR$/models/player.js" />
         <option value="$PROJECT_DIR$/modules/messaging.js" />
         <option value="$PROJECT_DIR$/modules/socket.js" />
+        <option value="$PROJECT_DIR$/models/player.js" />
         <option value="$PROJECT_DIR$/views/gameplay.js" />
       </list>
     </option>
@@ -107,9 +105,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
-    <option name="width" value="1301" />
-    <option name="height" value="744" />
+    <option name="y" value="82" />
+    <option name="width" value="1291" />
+    <option name="height" value="714" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -310,18 +308,19 @@
       <workItem from="1482489555402" duration="861000" />
       <workItem from="1482490478404" duration="3797000" />
       <workItem from="1482511514990" duration="2033000" />
-      <workItem from="1482525903595" duration="12067000" />
+      <workItem from="1482525903595" duration="12369000" />
+      <workItem from="1482560596053" duration="1821000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33921000" />
+    <option name="totallyTimeSpent" value="36044000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="65" y="82" width="1291" height="714" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1829362" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18435322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -356,9 +355,59 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/messaging.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1152">
+          <caret line="64" column="5" lean-forward="false" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/socket.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="74" column="43" lean-forward="true" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3222">
+          <caret line="180" column="0" lean-forward="true" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/gameplay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -392,9 +441,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -428,9 +475,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -464,9 +509,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -500,9 +543,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -536,9 +577,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -580,19 +619,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/player.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3240">
-          <caret line="180" column="0" lean-forward="true" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
+        <state relative-caret-position="1224">
           <caret line="74" column="43" lean-forward="true" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -610,7 +639,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/socket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
+        <state relative-caret-position="234">
           <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
@@ -618,7 +647,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/messaging.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
+        <state relative-caret-position="1152">
           <caret line="64" column="5" lean-forward="false" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
           <folding />
         </state>
@@ -636,17 +665,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="65" lean-forward="false" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/gameplay.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="513" column="0" lean-forward="true" selection-start-line="513" selection-start-column="0" selection-end-line="513" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="297">
+          <caret line="104" column="83" lean-forward="false" selection-start-line="104" selection-start-column="83" selection-end-line="104" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>

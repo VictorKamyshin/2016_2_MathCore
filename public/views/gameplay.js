@@ -94,13 +94,15 @@ export default class GamePlayView extends View {
         this.gameCellIds = evt.content.gameBoard;
 
         // let ball = BABYLON.Mesh.CreateSphere("Sphere", 20, 1, this.scene);
-        let sphMat = new BABYLON.StandardMaterial("sphMat", this.scene);
-        sphMat.diffuseColor = new BABYLON.Color3(1, 1, 1);
+        let scene = this.scene;
+        let sphMat = new BABYLON.StandardMaterial("sphMat", scene);
+        sphMat.diffuseTexture = new BABYLON.Texture("static/img/glass.jpg", scene);
+        sphMat.emissiveColor = new BABYLON.Color3(0.001,0.3,0.8);
         //ball.material = sphMat;
 
         for(let j = 0; j < 15; j++){
             //this.crystalls[j] = ball.clone("Crystall" + j);
-            this.crystalls[j] = new  BABYLON.Mesh.CreateSphere("Sphere" + j, 20, 20, this.scene);
+            this.crystalls[j] = new  BABYLON.Mesh.CreateSphere("Sphere" + j, 20, 35, this.scene);
             this.crystalls[j].material = sphMat;
             this.crystalls[j].renderingGroupId = 1;
         }
@@ -110,8 +112,8 @@ export default class GamePlayView extends View {
         for(let i = 0; i < this.gameCellIds.length; i++){
             if(this.gameCellIds[i]<15&&this.gameCellIds[i]>-1){
                 let y = 5;
-                let x = - (6 - i%13 + 0.15)*(1200/13);
-                let z = - (6 - i/13 + 0.15)*(1200/13);
+                let x = - (6 - i%13 + 0.15)*(2000/13);
+                let z = - (6 - i/13 + 0.15)*(2000/13);
                 this.crystalls[this.gameCellIds[i]].position = new BABYLON.Vector3(x, y, z);
                 this.pickCoins[i] = 1;
             }
@@ -164,10 +166,10 @@ export default class GamePlayView extends View {
         }
 
 
-        let posx = movement.playerIngameId === 0 ? 0.1 : -0.2 ; //?
+        let posx = movement.playerIngameId === 0 ? 0.1 : -0.1 ; //?
         let posz = movement.playerIngameId === 0 ? 0.2 :  0.8 ; //?
-        let x = - (6 - movement.targetCellIndex%13 + posx)*(1200/13);
-        let z = - (6 - movement.targetCellIndex/13 + posz)*(1200/13);
+        let x = - (6 - movement.targetCellIndex%13 + posx)*(2000/13);
+        let z = - (6 - movement.targetCellIndex/13 + posz)*(2000/13);
         let y = 40;
 
         shipOwner.set_ship_position(new BABYLON.Vector3(x,y,z));
@@ -229,8 +231,9 @@ export default class GamePlayView extends View {
 
             let posx = move.playerIngameId === 0 ? 0.1 : -0.2 ; //?
             let posz = move.playerIngameId === 0 ? 0.2 :  0.8 ; //?
-            let x = - (6 - move.targetCellIndex%13 + posx)*(1200/13);
-            let z = - (6 - move.targetCellIndex/13 + posz)*(1200/13);
+            let koef = Math.random();
+            let x = - (6 - move.targetCellIndex%13 + koef*posx)*(2000/13);
+            let z = - (6 - move.targetCellIndex/13 + koef*posz)*(2000/13);
             pirats[this.PiratId].position = new BABYLON.Vector3(x, 20, z);
 
             //try to add normal animation
@@ -262,12 +265,12 @@ export default class GamePlayView extends View {
              }
              });*/
 
-            console.log('Номер пирата, который ходит :');
+            /*console.log('Номер пирата, который ходит :');
             console.log(this.PiratId);
             console.log("Индекс целевой клетки:");
             console.log(this.targetCellIndex);
             console.log('Индекс клетки, которая пришла:');
-            console.log(move.targetCellIndex);
+            console.log(move.targetCellIndex);*/
 
 
             if(!evt.content.active){
@@ -409,7 +412,7 @@ export default class GamePlayView extends View {
     createScene(engine, canvas){
         let scene = new BABYLON.Scene(engine);
         let camera = new BABYLON.ArcRotateCamera("Camera", -Math.PI/2, Math.PI / 5,
-            12, new BABYLON.Vector3(-100,300,-500), scene);
+            12, new BABYLON.Vector3(-100,500,-500), scene);
         camera.lowerBetaLimit = 0.1;
         camera.lowerRadiusLimit = 30;
         camera.upperRadiusLimit = 700;
@@ -433,8 +436,8 @@ export default class GamePlayView extends View {
     }
 
     createGameField(scene){
-        var xmin = -600,  zmin = -600;
-        var xmax =  600,  zmax =  600;
+        var xmin = -1000,  zmin = -1000;
+        var xmax =  1000,  zmax =  1000;
         var precision = {"w" : 1, "h" : 1};
         var subdivisions = {'h' : 13, 'w' : 13};
 
@@ -505,7 +508,7 @@ export default class GamePlayView extends View {
 
 
 
-        let loader = BABYLON.SceneLoader;
+        /*let loader = BABYLON.SceneLoader;
 
          loader.ShowLoadingScreen = true;
 
@@ -524,7 +527,7 @@ export default class GamePlayView extends View {
              crst.renderingGroupId = 1;
              crst.position = BABYLON.Vector3.Zero();
 
-         });
+         });*/
         return tiledGround;
     }
 }
