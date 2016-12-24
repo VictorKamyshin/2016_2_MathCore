@@ -54,4 +54,13 @@ export default class MessagingTools{
         this.socket.send(JSON.stringify(clientCellMessage));
         console.log('Отправлен запрос на получение смежных клеток...');
     }
+
+    sendPickCoin(pickCoin){
+        let clientCellMessage = {};
+        //"ru.mail.park.mechanics.requests.fromUsers"
+        clientCellMessage.type = "ru.mail.park.mechanics.requests.fromUsers.CoinActionRequest";
+        clientCellMessage.content = JSON.stringify(pickCoin);
+        //console.log(JSON.stringify(clientCellMessage));
+        this.socket.send(JSON.stringify(clientCellMessage));
+    }
 }

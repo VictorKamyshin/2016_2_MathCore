@@ -35,7 +35,7 @@ export default class Player extends Model {
             this.pirats[j].scaling = new BABYLON.Vector3(25,25,25);
             this.pirats[j].renderingGroupId = 1;
         }
-        console.log(this.pirats[0]);
+        //console.log(this.pirats[0]);
         document.dispatchEvent(this.MeshLoadEvent);
     }
 
@@ -64,7 +64,7 @@ export default class Player extends Model {
 
     get_ship(obj){
         if(obj === undefined){
-            console.log("ship was undefined, but now all ok!")
+            //console.log("ship was undefined, but now all ok!")
         }
         return this.ship;
     }
@@ -80,12 +80,16 @@ export default class Player extends Model {
     move_pirat_from_ship(){
         for(let j = 0; j < 3; j++){
             if(!(this.pirats_on_ship[j]===undefined)){
-                console.log("Пытаемся достать с корабля пирата с номером " + j);
+                //console.log("Пытаемся достать с корабля пирата с номером " + j);
                 delete this.pirats_on_ship[j];
                 return j;
             }
         }
         return -1;
+    }
+
+    move_pirat_on_ship(piratID){
+        this.pirats_on_ship[piratID] = piratID;
     }
 
     get_pirats_on_ship(){
@@ -133,6 +137,13 @@ export default class Player extends Model {
             elem.isPickable = false;
             elem.isVisible = false;
         })
+
+        // let pirats = this.pirats;
+
+        //  this.scene.beginAnimation(pirats[0].skeleton, 0, 60, true, 1.0);
+        //  this.scene.beginAnimation(pirats[1].skeleton, 0, 60, true, 1.0);
+        //  this.scene.beginAnimation(pirats[2].skeleton, 0, 60, true, 1.0);
+
     }
 
     url(id){

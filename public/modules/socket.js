@@ -1,4 +1,3 @@
-
 import MessagingTools from "./messaging";
 
 export default class Socket {
@@ -10,9 +9,11 @@ export default class Socket {
         this.GetNeighborsEvent = new CustomEvent("GetNeighbors", { content : {}});
         this.MovementEvent = new CustomEvent("Movement", {content : {}});
         this.ShipMovementEvent = new CustomEvent("ShipMovement", {content : {}});
+        this.PickCoinEvent = new CustomEvent("PickCoin", {content : {}});
+        this.GameOverEvent = new CustomEvent("GameOver", {content : {}});
 
         this.socket.onopen = this.onSocketOpen.bind(this);
-        this.socket.onclose = this.onSocketClose;
+        this.socket.onclose = this.onSocketClose.bind(this);
         this.socket.onmessage = this.onSocketMessage.bind(this);
     }
 
@@ -28,6 +29,9 @@ export default class Socket {
 
     onSocketClose(){
         console.log('Info: WebSocket closed.');
+        //content = JSON.parse(message.content);
+        this.StartGameEvent.content = {};
+        document.dispatchEvent(this.GameOverEvent);
     }
 
 
@@ -45,32 +49,38 @@ export default class Socket {
         if(message.type === "ru.mail.park.websocket.MessageToClient$Request") {
             content = JSON.parse(message.content);
             responseContent.myMessage = content.myMessage;
-            console.log(responseContent.myMessage);
+            //console.log(responseContent.myMessage);
             return;
         }
         if(message.type === "ru.mail.park.mechanics.requests.toUsers.BoardMapForUsers$Request"){
-            console.log("Wow. Seems loke game been started");
+            //console.log("Wow. Seems loke game been started");
             content = JSON.parse(message.content);
             this.StartGameEvent.content = content;
             document.dispatchEvent(this.StartGameEvent);
         }
         if(message.type === "ru.mail.park.mechanics.requests.toUsers.NeighborsMessage$Request"){
-            console.log("Получены соседи клетки!");
+            //console.log("Получены соседи клетки!");
             content = JSON.parse(message.content);
             this.GetNeighborsEvent.content = content;
             document.dispatchEvent(this.GetNeighborsEvent);
         }
         if(message.type === "ru.mail.park.mechanics.requests.toUsers.PiratMoveMessage$Request") {
-            console.log("О_о сервер, ход другого игрока");
+            //console.log("О_о сервер, ход другого игрока");
             content = JSON.parse(message.content);
             this.MovementEvent.content = content;
             document.dispatchEvent(this.MovementEvent);
         }
         if(message.type === "ru.mail.park.mechanics.requests.toUsers.ShipMoveMessage$Request") {
-            console.log("К нам пришло сообщение о передвижении корабля");
+            //console.log("К нам пришло сообщение о передвижении корабля");
             content = JSON.parse(message.content);
             this.ShipMovementEvent.content = content;
             document.dispatchEvent(this.ShipMovementEvent);
+        }
+        if(message.type === "ru.mail.park.mechanics.requests.toUsers.CoinActionMessage$Request") {
+            console.log("К нам пришло сообщение подборе монеты");
+            content = JSON.parse(message.content);
+            this.PickCoinEvent.content = content;
+            document.dispatchEvent(this.PickCoinEvent);
         }
 
     }
