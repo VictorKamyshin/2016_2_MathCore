@@ -1,5 +1,6 @@
+const wc = require('./webpack.config.js');
 module.exports = function (config) {
-	'use strict';
+	//'use strict';
 	var configuration = {
 
 		basePath: '',
@@ -10,15 +11,39 @@ module.exports = function (config) {
 			'./public/components/**/*.js',
 			'./public/modules/**/*.js',
 			'./public/views/**/*.js',
-			'./test/**/*.spec.js'
+			'./test/**/*.spec.js',
 		],
 
 		reporters: ['progress', 'coverage'],
 		preprocessors: {
-			'./public/components/**/*.js': ['coverage'],
-			'./public/modules/**/*.js': ['coverage'],
-			'./public/views/**/*.js': ['coverage']
+			'./test/**/*.spec.js': ['webpack', 'babel'],
+			'./public/components/**/*.js': ['webpack'],
+			'./public/modules/**/*.js': ['webpack'],
+			'./public/views/**/*.js': ['webpack'],
+			
 		},
+		
+		webpack: wc,
+		
+		
+		webpackMiddleware: {
+            // webpack-dev-middleware configuration
+            // i.e.
+            noInfo: true,
+            // and use stats to turn off verbose output
+            stats: {
+                // options i.e. 
+                chunks: false
+            }
+        },
+		
+		plugins: [
+            require("karma-webpack"),
+			require('karma-babel-preprocessor'),
+			'karma-jasmine',
+            'karma-chrome-launcher',
+		    'karma-coverage'
+        ],
 
 		port: 9876,
 		colors: true,

@@ -4,19 +4,19 @@ import template from './scoreboard.tmpl.xml';
 
 
 export default class Scoreboard extends Block {
-  constructor(options = {data: {}}) {
-    super('div');
-    this.data = options.data;
-    this.template = template;
+    constructor(options = {data: {}}) {
+        super('div');
+        this.data = options.data;
+        this.template = template;
 
-    this.render();
-  }
+        this.render();
+    }
 
-  render() {
-    this._updateHtml();
-  }
+    render() {
+        this._updateHtml();
+    }
 
-  _updateHtml() {
-    this._el.innerHTML = this.template(this.data);
-  }
+    _updateHtml() {
+        this._el.innerHTML = this.template(this.data);
+    }
 }

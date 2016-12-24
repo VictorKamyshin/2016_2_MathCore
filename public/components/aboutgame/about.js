@@ -33,7 +33,7 @@ export default class GameAbout extends Block {
         obj.src = this.mas[this.to];
     }
 
-
+	
     init() {
         this._updateHtml();
     }

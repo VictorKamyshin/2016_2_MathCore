@@ -43,12 +43,12 @@ var HANDJS = HANDJS || {};
                 method.call(thisArg, this[i], i, this);
         };
     }
-	// Polyfilling trim for old browsers
-	if (!String.prototype.trim) {
-		String.prototype.trim = function () {
-			return this.replace(/^\s+|\s+$/, '');
-		};
-	}
+    // Polyfilling trim for old browsers
+    if (!String.prototype.trim) {
+        String.prototype.trim = function () {
+            return this.replace(/^\s+|\s+$/, '');
+        };
+    }
 
     // Installing Hand.js
     var supportedEventsNames = ["pointerdown", "pointerup", "pointermove", "pointerover", "pointerout", "pointercancel", "pointerenter", "pointerleave"];
@@ -71,7 +71,7 @@ var HANDJS = HANDJS || {};
     var generateTouchClonedEvent = function (sourceEvent, newName, canBubble, target, relatedTarget) {
         // Considering touch events are almost like super mouse events
         var evObj;
-        
+
         if (document.createEvent) {
             evObj = document.createEvent('MouseEvents');
             evObj.initMouseEvent(newName, canBubble, true, window, 1, sourceEvent.screenX, sourceEvent.screenY,
@@ -347,7 +347,9 @@ var HANDJS = HANDJS || {};
         var nameGenerator;
         var eventGenerator;
         if (window.MSPointerEvent) {
-            nameGenerator = function (name) { return getPrefixEventName("MS", name); };
+            nameGenerator = function (name) {
+                return getPrefixEventName("MS", name);
+            };
             eventGenerator = generateTouchClonedEvent;
         }
         else {
@@ -359,7 +361,9 @@ var HANDJS = HANDJS || {};
             case "pointerleave":
                 var targetEvent = nameGenerator(eventName);
                 if (item['on' + targetEvent.toLowerCase()] !== undefined) {
-                    registerOrUnregisterEvent(item, targetEvent, function (evt) { eventGenerator(evt, eventName); }, enable);
+                    registerOrUnregisterEvent(item, targetEvent, function (evt) {
+                        eventGenerator(evt, eventName);
+                    }, enable);
                 }
                 break;
         }
@@ -416,7 +420,7 @@ var HANDJS = HANDJS || {};
     interceptAddEventListener(window);
     interceptAddEventListener(window.HTMLElement || window.Element);
     interceptAddEventListener(document);
-    if (!navigator.isCocoonJS){
+    if (!navigator.isCocoonJS) {
         interceptAddEventListener(HTMLBodyElement);
         interceptAddEventListener(HTMLDivElement);
         interceptAddEventListener(HTMLImageElement);
@@ -438,7 +442,7 @@ var HANDJS = HANDJS || {};
     interceptRemoveEventListener(window);
     interceptRemoveEventListener(window.HTMLElement || window.Element);
     interceptRemoveEventListener(document);
-    if (!navigator.isCocoonJS){
+    if (!navigator.isCocoonJS) {
         interceptRemoveEventListener(HTMLBodyElement);
         interceptRemoveEventListener(HTMLDivElement);
         interceptRemoveEventListener(HTMLImageElement);
@@ -505,7 +509,7 @@ var HANDJS = HANDJS || {};
             node = node.parentNode;
         }
     }
-    
+
     // Handling events on window to prevent unwanted super-bubbling
     // All mouse events are affected by touch fallback
     function applySimpleEventTunnels(nameGenerator, eventGenerator) {
@@ -547,7 +551,9 @@ var HANDJS = HANDJS || {};
         if (window.MSPointerEvent) {
             //IE 10
             applySimpleEventTunnels(
-                function (name) { return getPrefixEventName("MS", name); },
+                function (name) {
+                    return getPrefixEventName("MS", name);
+                },
                 generateTouchClonedEvent);
         }
         else {
@@ -599,7 +605,7 @@ var HANDJS = HANDJS || {};
                             eventObject.preventDefault();
 
                         generateTouchEventProxyIfRegistered("pointermove", touchPoint, currentTarget, eventObject, true);
-                        if (!navigator.isCocoonJS){
+                        if (!navigator.isCocoonJS) {
                             var newTarget = document.elementFromPoint(touchPoint.clientX, touchPoint.clientY);
                             if (currentTarget === newTarget) {
                                 continue; // We can skip this as the pointer is effectively over the current target
@@ -644,7 +650,7 @@ var HANDJS = HANDJS || {};
             }
         }
     })();
-    
+
 
     // Extension to navigator
     if (navigator.pointerEnabled === undefined) {
@@ -661,7 +667,7 @@ var HANDJS = HANDJS || {};
 (function () {
     if (window.PointerEvent)
         return;
-        
+
     // Handling touch-action css rule
     if (document.styleSheets && document.addEventListener) {
         document.addEventListener("DOMContentLoaded", function () {

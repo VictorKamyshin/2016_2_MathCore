@@ -1,5 +1,5 @@
 
-import './modules/swLoader';
+//import './modules/swLoader';
 import './css/main.scss';
 import './lib/hand';
 
@@ -12,6 +12,7 @@ import GameRulesView from './views/gamerules';
 import Session from "./models/session";
 import ProfileView from './views/profile';
 import GameAboutView from './views/gameabout';
+
 
 window.session = new Session({});
 window.session.isAuthorised().then((response) => {
