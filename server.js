@@ -2,13 +2,13 @@ const express = require('express');
 const parser = require('body-parser');
 
 const app = express();
-const technoDoc = require('techno-gendoc');
+// const technoDoc = require('techno-gendoc');
 
 const mime = require('mime');
 
 const path = require('path');
 
-technoDoc.generate(require('./api'), 'dist');
+//technoDoc.generate(require('./api'), 'dist');
 
 
 app.use('/', express.static('dist', {maxAge: 1}));
