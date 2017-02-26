@@ -10,6 +10,7 @@
     "karma:start": "karma start",
     "karma:run": "karma run",
     "start": "node server.js",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "css": "sass public/css/main.scss public/css/main.css && postcss --local-plugins --use autoprefixer -o public/css/main.compiled.css public/css/main.css",
     "webpack": "webpack --display-error-details"
   },
