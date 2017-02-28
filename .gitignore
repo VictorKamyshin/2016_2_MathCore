@@ -9,3 +9,4 @@ public/css/main.css.*
 public/css/main.compiled.*
 /dist/
 .sass-cache
+.idea/
