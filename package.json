@@ -10,7 +10,6 @@
     "karma:start": "karma start",
     "karma:run": "karma run",
     "start": "node server.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "css": "sass public/css/main.scss public/css/main.css && postcss --local-plugins --use autoprefixer -o public/css/main.compiled.css public/css/main.css",
     "webpack": "webpack --display-error-details"
   },
@@ -73,6 +72,6 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.27"
+    "webpack": "^2.2.1"
   }
 }
