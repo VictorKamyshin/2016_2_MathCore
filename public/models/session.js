@@ -7,7 +7,6 @@ export default class Session extends Model {
         this._url = 'https://java-heroku-test-victor.herokuapp.com/';
     }
 
-
     login(login) {
         this._login = login;
     }
@@ -34,10 +33,7 @@ export default class Session extends Model {
         return this._login;
     }
 
-
-    // получаем базовый урл
     url(id, base = false) {
-
 
         if (id) {
             return base ? this._url : this._url + "session/";

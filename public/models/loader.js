@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict'
 
     function ScreenLoader(text) {
@@ -34,5 +34,4 @@
 
     window.ScreenLoader = ScreenLoader;
 
-
-}
+});

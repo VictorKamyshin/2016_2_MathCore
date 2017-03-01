@@ -14,7 +14,6 @@ export default class Form extends Block {
         this.render();
     }
 
-
     render() {
         this._updateHtml();
         this._installControls();
@@ -39,7 +38,6 @@ export default class Form extends Block {
 
         this._el.innerHTML = this.template(this.data);
     }
-
 
     _installControls() {
         let {controls = []} = this.data;
@@ -87,5 +85,4 @@ export default class Form extends Block {
         this.validFlag = check;
         return fields;
     }
-
 }

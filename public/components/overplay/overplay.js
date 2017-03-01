@@ -11,10 +11,7 @@ export default class Overplay extends Block {
         this._el.innerHTML = this.template();
         document.addEventListener('playermove', (e) => {
             this.setStatus(e.detail);
-
-            // body...
         });
-        //this._el.removeAttribute("hidden");
     }
 
     init() {
@@ -28,9 +25,8 @@ export default class Overplay extends Block {
          };
          let params = window.location.pathname.split("/");
          this._el.innerHTML = this.template({userData: userData, active: params.length == 1 ? "" : params[1]});
-        //this._el.innerHTML = this.template();
     }
-    setStatus(message){
+    setStatus(message) {
         let info = document.querySelector(".play__info");
         info.innerText = message;
     }

@@ -30,12 +30,10 @@ export default class Menu extends Block {
     }
 
     show() {
-        //   this._el.setAttribute('hidden', false);
         this._el.style.display = "block";
     }
 
     hide() {
-        //   this._el.setAttribute('hidden', true);
         this._el.style.display = "none";
     }
 
